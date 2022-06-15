@@ -1,0 +1,8 @@
+- hosts: localhost
+
+  tasks:
+    - name: Create service
+      command: kubectl apply -f deploy_manager.yml
+    
+    - name: Create Auto Scaling
+      command: kubectl autoscale deployment climate-app --cpu-percent=50 --min=2 --max=10
